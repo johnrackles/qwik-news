@@ -14,7 +14,7 @@ export default component$(({ story, i }: { story: Story; i?: number }) => {
       {story.url ? (
         <a href={story.url}>{story.title}</a>
       ) : (
-        <a href={`/item/${story.id}`}>{story.title}</a>
+        <Link href={`/item/${story.id}`}>{story.title}</Link>
       )}
       <div
         class={clsx(
