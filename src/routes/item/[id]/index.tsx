@@ -30,6 +30,12 @@ export default component$(() => {
   return (
     <div>
       <Item story={signal.value.item} />
+      {signal.value.item.text ? (
+        <div
+          dangerouslySetInnerHTML={signal.value.item.text}
+          class="text-grey"
+        />
+      ) : null}
       <div class="divider"></div>
       <ul class="comment">
         {signal.value.comments.map((comment, i) => (

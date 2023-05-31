@@ -13,7 +13,11 @@ export default component$(({ story, i }: { story: Story; i?: number }) => {
       {typeof i !== "undefined" ? (
         <span class="text-grey mr-2">{i + 1}.</span>
       ) : null}
-      <a href={story.url}>{story.title}</a>
+      {story.url ? (
+        <a href={story.url}>{story.title}</a>
+      ) : (
+        <a href={`/item/${story.id}`}>{story.title}</a>
+      )}
       <div
         class={clsx(
           "text-grey text-xs row-start-2",
