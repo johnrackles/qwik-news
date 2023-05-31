@@ -13,7 +13,7 @@ export const onGet: RequestHandler = async ({ cacheControl }) => {
 
 export default component$(() => {
   return (
-    <div class="container mx-auto bg-secondary font-sans">
+    <div class="container bg-neutral text-neutral-content mx-auto font-sans">
       <Header />
       <div class="p-4">
         <Slot />

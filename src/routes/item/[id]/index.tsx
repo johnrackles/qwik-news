@@ -31,10 +31,7 @@ export default component$(() => {
     <div>
       <Item story={signal.value.item} />
       {signal.value.item.text ? (
-        <div
-          dangerouslySetInnerHTML={signal.value.item.text}
-          class="text-grey"
-        />
+        <div dangerouslySetInnerHTML={signal.value.item.text} />
       ) : null}
       <div class="divider"></div>
       <ul class="comment">

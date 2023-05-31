@@ -3,7 +3,7 @@ import { Link } from "@builder.io/qwik-city";
 
 export default component$(() => {
   return (
-    <header class="bg-primary mt-2 pl-[2px]">
+    <header class="bg-[#ff6600] text-black mt-2 pl-[2px]">
       <nav>
         <ul class="flex flex-row items-center">
           <li>

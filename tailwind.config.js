@@ -6,13 +6,13 @@ module.exports = {
       fontFamily: {
         sans: ["Verdana", "Geneva", "sans-serif"],
       },
-      colors: {
-        primary: '#FF6600',
-        secondary: '#f6f6ef',
-        grey: '#828282',
-      }
+      /*  colors: {
+         primary: '#FF6600',
+         secondary: '#f6f6ef',
+         grey: '#828282',
+       } */
     },
   },
   plugins: [require('@tailwindcss/typography'), require("daisyui")],
-  daisyui: { themes: false },
+  daisyui: { themes: ["light", "dark"] },
 };

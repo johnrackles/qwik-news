@@ -10,9 +10,7 @@ dayjs.extend(relativeTime);
 export default component$(({ story, i }: { story: Story; i?: number }) => {
   return (
     <div class="mb-2 last-of-type:mb-0 grid grid-cols-[auto,1fr]">
-      {typeof i !== "undefined" ? (
-        <span class="text-grey mr-2">{i + 1}.</span>
-      ) : null}
+      {typeof i !== "undefined" ? <span class="mr-2">{i + 1}.</span> : null}
       {story.url ? (
         <a href={story.url}>{story.title}</a>
       ) : (

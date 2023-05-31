@@ -9,7 +9,7 @@ export const CommentComponent = component$(({ comment, indent }: Props) => {
 
   return (
     <li class="mb-4 lg:mb-8 ml-4">
-      <div class="text-sm text-grey mb-2">
+      <div class="text-sm mb-2">
         {comment.author} {dayjs(comment.created_at).fromNow()}
       </div>
       <div dangerouslySetInnerHTML={comment.text} class="pl-2" />
