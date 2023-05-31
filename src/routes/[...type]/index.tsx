@@ -5,14 +5,16 @@ import Item from "~/components/Item";
 
 import type { Story } from "~/types";
 
-export const useStories = routeLoader$(async () => {
+export const useStories = routeLoader$(async (requestEvent) => {
   const storyIdsResponse = await fetch(
-    `https://hacker-news.firebaseio.com/v0/topstories.json`
+    `https://hacker-news.firebaseio.com/v0/${
+      requestEvent.query.get("type") ?? "top"
+    }stories.json`
   );
   const storyIds: number[] = await storyIdsResponse.json();
 
   return Promise.all(
-    storyIds.slice(0, 30).map(async (id) => {
+    storyIds?.slice(0, 30).map(async (id) => {
       const response = await fetch(
         `https://hacker-news.firebaseio.com/v0/item/${id}.json`
       );
