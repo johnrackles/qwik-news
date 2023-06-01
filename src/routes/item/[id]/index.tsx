@@ -3,25 +3,23 @@ import type { DocumentHead } from "@builder.io/qwik-city";
 import { routeLoader$ } from "@builder.io/qwik-city";
 import { CommentComponent } from "~/components/CommentComponent";
 import Item from "~/components/Item";
-import type { Comment, Story } from "~/types";
-
-const resolveComments = async (id: number) => {
-  const response = await fetch(`http://hn.algolia.com/api/v1/items/${id}`);
-  const item = await response.json();
-  return item;
-};
+import type { AlgoliaItem, Story } from "~/types";
 
 export const useItem = routeLoader$(async (requestEvent) => {
-  const response = await fetch(
-    `https://hacker-news.firebaseio.com/v0/item/${requestEvent.params.id}.json`
-  );
-  const item: Story = await response.json();
-  // recursively get comments
-  const comments: Comment[] = await Promise.all(
-    (item.kids || []).map((id) => resolveComments(id))
-  );
+  const { id } = requestEvent.params;
+  const [item, comments] = await Promise.all([
+    fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`)
+      .then((res) => res.json())
+      .then((data) => data),
+    fetch(`http://hn.algolia.com/api/v1/items/${id}`)
+      .then((res) => res.json())
+      .then((data) => data.children),
+  ]);
 
-  return { item, comments };
+  return { item, comments } as {
+    item: Story;
+    comments: AlgoliaItem["children"];
+  };
 });
 
 export default component$(() => {
@@ -35,7 +33,7 @@ export default component$(() => {
       ) : null}
       <div class="divider"></div>
       <ul class="comment">
-        {signal.value.comments.map((comment, i) => (
+        {signal.value.comments?.map((comment, i) => (
           <CommentComponent key={comment.id} comment={comment} indent={i} />
         ))}
       </ul>

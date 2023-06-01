@@ -2,9 +2,9 @@ import { component$, useSignal } from "@builder.io/qwik";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { SlideDown } from "~/integrations/react/SlideDown";
-import type { Comment } from "~/types";
+import type { AlgoliaItem } from "~/types";
 
-type Props = { comment: Comment; indent: number };
+type Props = { comment: AlgoliaItem["children"][number]; indent: number };
 
 dayjs.extend(relativeTime);
 

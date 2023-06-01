@@ -11,11 +11,14 @@ export type Story = {
   text?: string;
 };
 
-export type Comment = {
-  author: string;
+export type AlgoliaItem = {
   id: number;
   created_at: string;
-  type: "comment";
+  author: string;
+  title?: string;
+  url: string;
+  points: number;
+  parten_id: number | null;
   text: string;
-  children?: Comment[];
+  children: AlgoliaItem[] | [];
 };
