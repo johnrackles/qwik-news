@@ -29,7 +29,7 @@ export const CommentComponent = component$(({ comment, indent }: Props) => {
       <SlideDown hidden={hidden.value} client:signal={hidden}>
         <div
           dangerouslySetInnerHTML={comment.text}
-          class="pl-2 mb-4 lg:mb-8 prose"
+          class="pl-2 mb-4 lg:mb-8 prose text-primary-content"
         />
         <div class="divider" />
         {comment.children?.length ? (
