@@ -12,7 +12,9 @@ export default component$(({ story, i }: { story: Story; i?: number }) => {
     <div class="mb-2 last-of-type:mb-0 grid grid-cols-[auto,1fr]">
       {typeof i !== "undefined" ? <span class="mr-2">{i + 1}.</span> : null}
       {story.url ? (
-        <a href={story.url}>{story.title}</a>
+        <a href={story.url} class="text-primary-content">
+          {story.title}
+        </a>
       ) : (
         <Link href={`/item/${story.id}`} class="visited:link-primary">
           {story.title}
