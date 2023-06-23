@@ -97,7 +97,7 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "Hacker News",
+  title: "Qwik News",
   meta: [
     {
       name: "description",

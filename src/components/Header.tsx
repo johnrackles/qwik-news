@@ -19,10 +19,10 @@ export default component$(() => {
           </li>
           <li class="mr-2">
             <Link class="font-bold text-sm leading-none " href="/">
-              Hacker News
+              Qwik News
             </Link>
           </li>
-          <li>
+          <li class="mr-2">
             <Link class="text-sm leading-none" href="/new">
               new
             </Link>

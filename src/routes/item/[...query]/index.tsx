@@ -82,5 +82,5 @@ export default component$(() => {
 export const head: DocumentHead = ({ resolveValue }) => {
   const story = resolveValue(useItem);
 
-  return { title: `${story.item.title} | Hacker News` };
+  return { title: `${story.item.title} | Qwik News` };
 };
