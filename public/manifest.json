@@ -1,9 +1,11 @@
 {
   "$schema": "https://json.schemastore.org/web-manifest-combined.json",
-  "name": "qwik-project-name",
-  "short_name": "Welcome to Qwik",
+  "name": "Qwik News",
+  "short_name": "Qwik News",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#fff",
-  "description": "A Qwik project app."
+  "theme_color": "#FF6600",
+  "description": "Qwik Hacker News clone",
+  "icons": [{ "src": "y18.svg", "type": "image/svg+xml" }]
 }
