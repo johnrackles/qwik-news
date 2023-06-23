@@ -38,6 +38,5 @@ lerna-debug.log*
 .yarn/*
 !.yarn/releases
 
-# Vercel
-.vercel
-.env*.local
+# Cloudflare
+functions/**/*.js
