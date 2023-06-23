@@ -18,13 +18,18 @@ export default component$(() => {
             </Link>
           </li>
           <li class="mr-2">
-            <Link class="font-bold text-sm leading-none " href="/news">
+            <Link class="font-bold text-sm leading-none " href="/">
               Hacker News
             </Link>
           </li>
           <li>
-            <Link class="text-sm leading-none" href="/newest">
+            <Link class="text-sm leading-none" href="/new">
               new
+            </Link>
+          </li>
+          <li>
+            <Link class="text-sm leading-none" href="/best">
+              best
             </Link>
           </li>
         </ul>
