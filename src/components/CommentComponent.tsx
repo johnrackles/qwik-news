@@ -14,7 +14,7 @@ export const CommentComponent = component$(({ comment, indent }: Props) => {
   if (!comment.text) return null;
 
   return (
-    <li class="mb-4 lg:mb-8 ml-4">
+    <li class="mb-4 lg:mb-8">
       <div class="text-sm mb-2">
         {comment.author} {dayjs(comment.created_at).fromNow()} |
         <button
@@ -29,7 +29,7 @@ export const CommentComponent = component$(({ comment, indent }: Props) => {
       <SlideDown hidden={hidden.value} client:signal={hidden}>
         <div
           dangerouslySetInnerHTML={comment.text}
-          class="pl-2 mb-4 lg:mb-8 prose text-primary-content"
+          class="mb-4 lg:mb-8 prose text-primary-content"
         />
         <div class="divider" />
         {comment.children?.length ? (

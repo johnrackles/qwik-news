@@ -6,8 +6,9 @@ import Item from "~/components/Item";
 import type { AlgoliaItem, Story } from "~/types";
 
 export const useItem = routeLoader$(async (requestEvent) => {
-  const pageSize = 10;
+  const pageSize = 100;
   const [id, page] = requestEvent.params.query.split("/");
+  const pageAsNumber = page ? Number(page) : 1;
   const [item, comments] = await Promise.all<
     [Promise<Story>, Promise<AlgoliaItem>]
   >([
@@ -17,11 +18,16 @@ export const useItem = routeLoader$(async (requestEvent) => {
     fetch(`http://hn.algolia.com/api/v1/items/${id}`)
       .then((res) => res.json())
       .then((data) => {
-        return data;
+        // check which page we are on and return the correct slice of data
+        return {
+          ...data,
+          children: data.children.slice(
+            pageSize * (pageAsNumber - 1),
+            pageSize * pageAsNumber
+          ) as AlgoliaItem["children"],
+        };
       }),
   ]);
-
-  const pageAsNumber = page ? Number(page) : 1;
 
   return {
     item,
@@ -47,22 +53,27 @@ export default component$(() => {
     <div>
       <Item story={signal.value.item} />
       {signal.value.item.text ? (
-        <div class="prose" dangerouslySetInnerHTML={signal.value.item.text} />
+        <div
+          class="prose text-primary-content"
+          dangerouslySetInnerHTML={signal.value.item.text}
+        />
       ) : null}
       <div class="divider"></div>
-      <ul class="comment">
+      <ul class="comment ml-4 lg:ml-8">
         {signal.value.comments?.map((comment, i) => (
           <CommentComponent key={comment.id} comment={comment} indent={i} />
         ))}
       </ul>
       {signal.value.meta.pages > 1 &&
-      pageAsNumber + 1 <= signal.value.meta.pages ? (
+      pageAsNumber + 1 < signal.value.meta.pages ? (
         <Link href={`/item/${id}/${pageAsNumber + 1}`} class="link">
           Next Page
         </Link>
       ) : null}
       {pageAsNumber > 1 ? (
-        <Link href={`/item/${id}/${pageAsNumber - 1}`}>Previous Page</Link>
+        <Link href={`/item/${id}/${pageAsNumber - 1}`} class="link">
+          Previous Page
+        </Link>
       ) : null}
     </div>
   );
