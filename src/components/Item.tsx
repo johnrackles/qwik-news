@@ -14,7 +14,7 @@ export default component$(({ story, i }: { story: Story; i?: number }) => {
         <span class="mr-2 text-right">{i + 1}.</span>
       ) : null}
       {story.url ? (
-        <a href={story.url} class="text-primary-content">
+        <a href={story.url} class="text-base-content">
           {story.title}
         </a>
       ) : (
@@ -24,7 +24,7 @@ export default component$(({ story, i }: { story: Story; i?: number }) => {
       )}
       <div
         class={clsx(
-          "text-grey text-xs row-start-2",
+          "text-xs row-start-2",
           typeof i !== "undefined" && "col-start-2"
         )}
       >

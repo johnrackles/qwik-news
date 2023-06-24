@@ -71,7 +71,7 @@ export default component$(() => {
           </li>
         ))}
       </ul>
-      <div class="join grid grid-cols-2 max-w-xs mx-auto">
+      <div class="join grid grid-cols-2 max-w-xs mx-auto mb-4 lg:mb-8">
         <Link
           class={clsx(
             "join-item btn btn-outline",

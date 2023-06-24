@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Verdana", "Geneva", "sans-serif"],
+        // sans: ["Verdana", "Geneva", "sans-serif"],
       },
       /*  colors: {
          primary: '#FF6600',
@@ -14,5 +14,5 @@ module.exports = {
     },
   },
   plugins: [require('@tailwindcss/typography'), require("daisyui")],
-  daisyui: { themes: ["dark"] },
+  daisyui: { themes: ["light", "dark"] },
 };

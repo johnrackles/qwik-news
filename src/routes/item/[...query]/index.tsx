@@ -54,7 +54,7 @@ export default component$(() => {
       <Item story={signal.value.item} />
       {signal.value.item.text ? (
         <div
-          class="prose text-primary-content"
+          class="prose text-base-content"
           dangerouslySetInnerHTML={signal.value.item.text}
         />
       ) : null}

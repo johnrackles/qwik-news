@@ -28,7 +28,7 @@ export default component$(() => {
   });
 
   return (
-    <div class="container bg-neutral text-neutral-content mx-auto font-sans max-w-5xl">
+    <div class="container bg-base-200 text-base-content mx-auto font-sans max-w-5xl">
       <Header />
       <div class="p-4">
         <Slot />

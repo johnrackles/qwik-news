@@ -1,8 +1,12 @@
-import { component$ } from '@builder.io/qwik';
-import { QwikCityProvider, RouterOutlet, ServiceWorkerRegister } from '@builder.io/qwik-city';
-import { RouterHead } from './components/router-head/router-head';
+import { component$ } from "@builder.io/qwik";
+import {
+  QwikCityProvider,
+  RouterOutlet,
+  ServiceWorkerRegister,
+} from "@builder.io/qwik-city";
+import { RouterHead } from "./components/router-head/router-head";
 
-import './global.css';
+import "./global.css";
 
 export default component$(() => {
   /**
@@ -18,6 +22,16 @@ export default component$(() => {
         <meta charSet="utf-8" />
         <link rel="manifest" href="/manifest.json" />
         <RouterHead />
+        <script
+          dangerouslySetInnerHTML={`
+          if (window.matchMedia("(prefers-color-scheme: dark)").matches &&
+            localStorage.theme !== 'light') {
+            localStorage.theme = 'dark';
+          }
+
+          document.documentElement.dataset.theme = localStorage.theme || '';
+        `}
+        />
       </head>
       <body lang="en">
         <RouterOutlet />
