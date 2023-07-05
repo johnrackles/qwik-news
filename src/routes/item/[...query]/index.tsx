@@ -59,7 +59,7 @@ export default component$(() => {
         />
       ) : null}
       <div class="divider"></div>
-      <ul class="comment ml-4 lg:ml-8">
+      <ul class="comment">
         {signal.value.comments?.map((comment, i) => (
           <CommentComponent key={comment.id} comment={comment} indent={i} />
         ))}
