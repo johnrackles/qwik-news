@@ -1,4 +1,5 @@
 import { component$, Slot, useTask$ } from "@builder.io/qwik";
+import type { DocumentHead } from "@builder.io/qwik-city";
 import { useLocation, type RequestHandler } from "@builder.io/qwik-city";
 import NProgress from "nprogress";
 import Footer from "~/components/Footer";
@@ -37,3 +38,12 @@ export default component$(() => {
     </div>
   );
 });
+
+export const head: DocumentHead = {
+  meta: [
+    {
+      name: "robots",
+      content: "noindex",
+    },
+  ],
+};
