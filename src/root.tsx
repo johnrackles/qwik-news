@@ -33,7 +33,7 @@ export default component$(() => {
         `}
         />
       </head>
-      <body lang="en">
+      <body lang="en" class="font-sans">
         <RouterOutlet />
         <ServiceWorkerRegister />
         <script
