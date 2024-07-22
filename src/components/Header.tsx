@@ -1,13 +1,15 @@
 import { component$ } from "@builder.io/qwik";
-import { Link } from "@builder.io/qwik-city";
+import { Link, useLocation } from "@builder.io/qwik-city";
 
 export default component$(() => {
+  const loc = useLocation();
+
   return (
     <header class="bg-[#ff6600] text-black pl-[2px]">
       <nav>
         <ul class="flex flex-row items-center">
           <li>
-            <Link href="/">
+            <Link href="/" reload={loc.url.pathname === "/"}>
               <img
                 src="/y18.svg"
                 alt="Y"
