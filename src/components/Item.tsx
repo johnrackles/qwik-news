@@ -9,16 +9,16 @@ dayjs.extend(relativeTime);
 
 export default component$(({ story, i }: { story: Story; i?: number }) => {
   return (
-    <div class="mb-2 last-of-type:mb-0 grid grid-cols-[auto,1fr]">
+    <div class="mb-2 last-of-type:mb-0 grid grid-cols-[auto,1fr] text-primary-content">
       {typeof i !== "undefined" ? (
         <span class="mr-2 text-right">{i + 1}.</span>
       ) : null}
       {story.url ? (
-        <a href={story.url} class="text-base-content">
+        <a href={story.url} class="text-base-content visited:link-secondary">
           {story.title}
         </a>
       ) : (
-        <Link href={`/item/${story.id}`} class="visited:link-primary">
+        <Link href={`/item/${story.id}`} class="visited:link-secondary">
           {story.title}
         </Link>
       )}
@@ -32,7 +32,7 @@ export default component$(({ story, i }: { story: Story; i?: number }) => {
         {dayjs(dayjs.unix(story.time)).fromNow()} |{" "}
         <Link
           href={`/item/${story.id}`}
-          class="link-hover whitespace-nowrap leading-6"
+          class="link-hover whitespace-nowrap leading-6 visited:link-secondary"
         >
           {story.descendants} comments
         </Link>

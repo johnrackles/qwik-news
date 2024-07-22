@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
+  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
       fontFamily: {
@@ -13,6 +13,6 @@ module.exports = {
        } */
     },
   },
-  plugins: [require('@tailwindcss/typography'), require("daisyui")],
-  daisyui: { themes: ["light", "dark"] },
+  plugins: [require("@tailwindcss/typography"), require("daisyui")],
+  daisyui: { themes: ["light", "business"], darkTheme: "business" },
 };
