@@ -38,17 +38,22 @@ export const useStories = routeLoader$(async (requestEvent) => {
         const response = await fetch(
           `https://hacker-news.firebaseio.com/v0/item/${id}.json`
         );
-        const item = await response.json();
 
-        return {
-          id: item.id,
-          title: item.title,
-          url: item.url,
-          by: item.by,
-          time: item.time,
-          score: item.score,
-          descendants: item.descendants,
-        } as Story;
+        if (response.ok) {
+          const item = await response.json();
+
+          if (item) {
+            return {
+              id: item.id,
+              title: item.title,
+              url: item.url,
+              by: item.by,
+              time: item.time,
+              score: item.score,
+              descendants: item.descendants,
+            } as Story;
+          }
+        }
       })
   );
 });
@@ -62,14 +67,16 @@ export default component$(() => {
   return (
     <>
       <ul class="mb-4 lg:mb-8">
-        {signal.value.map((story, i) => (
-          <li
-            key={story.id}
-            class="mb-2 last-of-type:mb-0 grid grid-cols-[auto,1fr]"
-          >
-            <Item story={story} i={i + (pageAsNumber - 1) * PAGE_SIZE} />
-          </li>
-        ))}
+        {signal.value.map((story, i) =>
+          typeof story !== "undefined" ? (
+            <li
+              key={story.id}
+              class="mb-2 last-of-type:mb-0 grid grid-cols-[auto,1fr]"
+            >
+              <Item story={story} i={i + (pageAsNumber - 1) * PAGE_SIZE} />
+            </li>
+          ) : null
+        )}
       </ul>
       <div class="join grid grid-cols-2 max-w-xs mx-auto mb-4 lg:mb-8">
         <Link
