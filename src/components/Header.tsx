@@ -3,13 +3,14 @@ import { Link, useLocation } from "@builder.io/qwik-city";
 
 export default component$(() => {
   const loc = useLocation();
+  const isRoot = loc.url.pathname === "/";
 
   return (
     <header class="bg-[#ff6600] text-black pl-[2px]">
       <nav>
         <ul class="flex flex-row items-center">
           <li>
-            <Link href="/" reload={loc.url.pathname === "/"}>
+            <Link href={isRoot ? undefined : "/"} reload={isRoot}>
               <img
                 src="/y18.svg"
                 alt="Y"
