@@ -41,7 +41,7 @@ export default [
       sourceType: "module",
 
       parserOptions: {
-        tsconfigRootDir: "/Users/johannes.rackles/Developer/qwik-news",
+        tsconfigRootDir: __dirname,
         project: ["./tsconfig.json"],
 
         ecmaFeatures: {
