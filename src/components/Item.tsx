@@ -28,8 +28,8 @@ export default component$(({ story, i }: { story: Story; i?: number }) => {
           typeof i !== "undefined" && "col-start-2"
         )}
       >
-        <span>{story.score}</span> points by <span>{story.by}</span>{" "}
-        <span>{dayjs(dayjs.unix(story.time)).fromNow()}</span> |{" "}
+        <>{story.score}</> points by <>{story.by}</>{" "}
+        <>{dayjs(dayjs.unix(story.time)).fromNow()}</> |{" "}
         <Link
           href={`/item/${story.id}`}
           class="link-hover whitespace-nowrap leading-6 visited:link-secondary"
